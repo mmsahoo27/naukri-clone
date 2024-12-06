@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title th:text="${jobDTO.id != null ? 'Edit Job' : 'Create Job'}"></title>
+</head>
+<body>
+<h1 th:text="${jobDTO.id != null ? 'Edit Job' : 'Create Job'}"></h1>
+
+<form th:action="|${jobDTO.id == null ? '/jobs/create' : '/jobs/edit/' + jobDTO.id}|"
+      th:method="post" th:object="${jobDTO}">
+    <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" th:field="*{title}" placeholder="Job Title" required>
+    </div>
+
+    <div>
+        <label for="description">Description:</label>
+        <textarea id="description" th:field="*{description}" placeholder="Job Description" required></textarea>
+    </div>
+
+    <div>
+        <label for="location">Location:</label>
+        <input type="text" id="location" th:field="*{location}" placeholder="Job Location" required>
+    </div>
+
+    <div>
+        <label for="salaryRange">Salary Range:</label>
+        <input type="text" id="salaryRange" th:field="*{salaryRange}" placeholder="Salary Range" required>
+    </div>
+
+    <div>
+        <label for="experienceRequired">Experience Required:</label>
+        <input type="number" id="experienceRequired" th:field="*{experienceRequired}" placeholder="Years of Experience" required>
+    </div>
+
+    <button type="submit">Save</button>
+</form>
+<a href="/jobs">Cancel</a>
+
+</body>
+</html>

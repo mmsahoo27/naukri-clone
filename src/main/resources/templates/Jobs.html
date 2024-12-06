@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Job List</title>
+</head>
+<body>
+<h1>Job List</h1>
+
+<!-- Search form -->
+<form action="/jobs/search" method="get">
+    <label>
+        <input type="text" name="location" placeholder="Search by location" th:value="${location}">
+    </label>
+    <button type="submit">Search</button>
+</form>
+
+<a href="jobs/create">create job</a>
+
+<!-- Jobs listing -->
+<ul>
+    <li th:each="job : ${jobs}">
+        <h3 th:text="${job.title}"></h3>
+        <p th:text="'Location: ' + ${job.location}"></p>
+        <p th:text="'Salary: ' + ${job.salaryRange}"></p>
+        <p th:text="'Employer: ' + ${job.employerName}"></p>
+        <a th:href="@{'/jobs/' + ${job.id}}">View Details</a>
+    </li>
+</ul>
+
+<!-- Pagination controls -->
+<div>
+    <a th:if="${currentPage > 0}" th:href="@{'/jobs?page=' + (${currentPage - 1})}" th:text="'Previous'"></a>
+    <span th:text="'Page ' + (${currentPage + 1}) + ' of ' + ${totalPages}"></span>
+    <a th:if="${currentPage + 1 < totalPages}" th:href="@{'/jobs?page=' + (${currentPage + 1})}" th:text="'Next'"></a>
+</div>
+</body>
+</html>

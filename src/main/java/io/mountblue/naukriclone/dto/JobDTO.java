@@ -1,34 +1,17 @@
-package io.mountblue.naukriclone.entity;
-
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+package io.mountblue.naukriclone.dto;
 
 import java.sql.Date;
-import java.util.List;
 import java.util.UUID;
 
-@Getter
-@Setter
-@Entity
-public class Job {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+public class JobDTO {
     private UUID id;
-
     private String title;
     private String description;
     private String location;
     private String salaryRange;
     private int experienceRequired;
     private Date postedDate;
-
-    @ManyToOne
-    @JoinColumn(name = "employer_id")
-    private Employer employer;
-
-    @OneToMany(mappedBy = "job")
-    private List<Application> applications;
+    private String employerName;
 
     public UUID getId() {
         return id;
@@ -86,19 +69,11 @@ public class Job {
         this.postedDate = postedDate;
     }
 
-    public Employer getEmployer() {
-        return employer;
+    public String getEmployerName() {
+        return employerName;
     }
 
-    public void setEmployer(Employer employer) {
-        this.employer = employer;
-    }
-
-    public List<Application> getApplications() {
-        return applications;
-    }
-
-    public void setApplications(List<Application> applications) {
-        this.applications = applications;
+    public void setEmployerName(String employerName) {
+        this.employerName = employerName;
     }
 }

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Job Details</title>
+</head>
+<body>
+<h1 th:text="${job.title}"></h1>
+
+<p><b>Location:</b> <span th:text="${job.location}"></span></p>
+<p><b>Salary:</b> <span th:text="${job.salaryRange}"></span></p>
+<p><b>Experience Required:</b> <span th:text="${job.experienceRequired}"></span> years</p>
+<p><b>Description:</b> <span th:text="${job.description}"></span></p>
+<p><b>Posted Date:</b> <span th:text="${#dates.format(job.postedDate, 'dd-MM-yyyy')}"></span></p>
+<p><b>Employer:</b> <span th:text="${job.employerName}"></span></p>
+
+<a href="/jobs">Back to Jobs</a>
+</body>
+</html>

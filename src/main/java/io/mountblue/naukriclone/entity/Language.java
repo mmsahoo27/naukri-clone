@@ -22,4 +22,36 @@ public class Language {
 
     @ManyToMany(mappedBy = "languages")
     private List<JobSeeker> jobSeekers;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Proficiency getProficiency() {
+        return proficiency;
+    }
+
+    public void setProficiency(Proficiency proficiency) {
+        this.proficiency = proficiency;
+    }
+
+    public List<JobSeeker> getJobSeekers() {
+        return jobSeekers;
+    }
+
+    public void setJobSeekers(List<JobSeeker> jobSeekers) {
+        this.jobSeekers = jobSeekers;
+    }
 }
